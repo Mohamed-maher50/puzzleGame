@@ -51,7 +51,7 @@ const geRank = async (req, res) => {
     const result = await User.find({})
       .sort({ coins: 1 })
       .limit(10)
-      .populate("playerId", "fullName email");
+      .select("fullName email coins");
 
     res.status(200).json(result);
   } catch (error) {
