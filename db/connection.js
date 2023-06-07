@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(process.env.localDb, {
+  .connect(process.env.mongodbAtls, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
