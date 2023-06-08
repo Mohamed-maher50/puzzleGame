@@ -16,9 +16,9 @@ const SignUp = async (req, res) => {
 };
 const Login = async (req, res) => {
   try {
-    const { id, password } = req.body;
+    const { email, password } = req.body;
 
-    const user = await User.findOne({ iD: id });
+    const user = await User.findOne({ email: email });
     if (!user) return res.status(400).json({ msg: "can not found this email" });
     var checkPassword = await comparePassword(password, user.password);
     if (!checkPassword)

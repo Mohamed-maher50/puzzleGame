@@ -44,12 +44,8 @@ const signUPValidationRules = [
 
 // login validations
 const LoginValidationRules = [
-  body("id")
-    .trim()
-    .not()
-    .isEmpty()
-    .isString()
-    .withMessage("Please Enter Your ID"),
+  body("email").trim().not().isEmpty().isEmail().withMessage("not valid email"),
+
   body("password")
     .trim()
     .not()
