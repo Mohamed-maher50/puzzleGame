@@ -49,7 +49,7 @@ const completePuzzle = async (req, res) => {
 const geRank = async (req, res) => {
   try {
     const result = await User.find({})
-      .sort({ coins: 1 })
+      .sort({ coins: -1 })
       .limit(10)
       .select("fullName email coins");
 

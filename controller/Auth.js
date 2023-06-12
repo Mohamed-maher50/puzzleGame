@@ -5,11 +5,11 @@ const SignUp = async (req, res) => {
     const isAlreadyExist = await User.findOne({ email: req.body.email });
     if (isAlreadyExist)
       return res.status(400).json({ msg: "this account already exist" });
-    const { email, fullName, _id, iD } = await new User({
+    const { email, fullName, _id, iD, coins } = await new User({
       ...req.body,
     }).save();
     const token = createJwtToken({ userId: _id });
-    res.status(200).json({ jwt: token, email, fullName, _id, iD });
+    res.status(200).json({ jwt: token, email, fullName, _id, iD, coins });
   } catch (error) {
     res.status(500).json({ msg: error });
   }
@@ -30,6 +30,7 @@ const Login = async (req, res) => {
       fullName: user.fullName,
       _id: user._id,
       iD: user.iD,
+      coins: user.coins,
     });
   } catch (error) {
     res.sendStatus(200);

@@ -4,9 +4,10 @@ const createJwtToken = (payload) => {
   try {
     const days = 2;
 
-    const token = jwt.sign(payload, process.env.secretJwtKey, {
-      expiresIn: days * 24 * 60 * 60,
-    });
+    const token = jwt.sign(payload, process.env.secretJwtKey);
+    // {
+    //   expiresIn: days * 24 * 60 * 60,
+    // }
     return token;
   } catch (error) {}
 };
