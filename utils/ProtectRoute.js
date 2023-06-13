@@ -16,7 +16,7 @@ const ProtectRoute = async (req, res, next) => {
     req.userId = userId;
     next();
   } catch (error) {
-    res.status(500).json({ msg: error });
+    res.status(401).json({ msg: error });
   }
 };
 const isAdmin = async (req, res, next) => {

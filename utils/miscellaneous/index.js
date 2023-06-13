@@ -14,9 +14,10 @@ const createJwtToken = (payload) => {
 const verificationToken = (token) => {
   try {
     const data = jwt.verify(token, process.env.secretJwtKey);
+
     return data;
   } catch (error) {
-    return null;
+    return error;
   }
 };
 
