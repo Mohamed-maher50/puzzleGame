@@ -8,10 +8,30 @@ const deletePlayer = async (req, res) => {
     await User.findByIdAndDelete(userId);
     res.sendStatus(200);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: error });
+  }
+};
+const gift = async (req, res) => {
+  console.log(req.userId);
+  try {
+    await User.findByIdAndUpdate(
+      req.userId,
+      {
+        $inc: {
+          coins: req.body.coins,
+        },
+      },
+
+      { new: true }
+    );
+
+    res.sendStatus(201);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ msg: error });
   }
 };
 module.exports = {
   deletePlayer,
+  gift,
 };

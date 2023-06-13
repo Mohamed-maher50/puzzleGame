@@ -58,4 +58,5 @@ const geRank = async (req, res) => {
     res.status(500).json({ msg: error });
   }
 };
+
 module.exports = { createPizzle, completePuzzle, geRank };

@@ -40,12 +40,23 @@ const signUPValidationRules = [
       min: 10,
     })
     .withMessage("phone not valid must be minimum 10 digits"),
+  body("maritalStatus")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("marital Status is required"),
+  body("age")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("age is required")
+    .isNumeric()
+    .withMessage("age must be number"),
 ];
 
 // login validations
 const LoginValidationRules = [
   body("email").trim().not().isEmpty().isEmail().withMessage("not valid email"),
-
   body("password")
     .trim()
     .not()
