@@ -46,4 +46,12 @@ const findUserById = async (id) => {
     return undefined;
   }
 };
-module.exports = { SignUp, Login, findUserById };
+const GetUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select("-password");
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ msg: error });
+  }
+};
+module.exports = { SignUp, Login, findUserById, GetUser };
