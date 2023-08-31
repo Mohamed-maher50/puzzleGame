@@ -24,6 +24,7 @@ const isAdmin = async (req, res, next) => {
     const { userId } = req;
     const user = await findUserById(userId);
     if (!user) return res.status(400).json({ msg: "can't find this account" });
+    if (req.params.userId == user._id) return next();
     if (user.userType == "user")
       return res.status(403).json({ msg: "you are not authorized" });
     next();
