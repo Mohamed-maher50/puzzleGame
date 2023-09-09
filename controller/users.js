@@ -10,7 +10,6 @@ const deletePlayer = async (req, res) => {
   }
 };
 const gift = async (req, res) => {
-  console.log(req.userId);
   try {
     await User.findByIdAndUpdate(
       req.userId,

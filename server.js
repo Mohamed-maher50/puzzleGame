@@ -13,7 +13,7 @@ app.use(helmet());
 app.use(cors("*"));
 app.use(morgan("tiny"));
 app.use(express.json());
-
+app.get("/", (req, res) => res.send("server is running successful"));
 // routes
 app.use("/auth/", require("./routes/Auth"));
 app.use("/api/game", ProtectRoute, require("./routes/Game"));
